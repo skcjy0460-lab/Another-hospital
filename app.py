@@ -8,102 +8,119 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ─── CSS ────────────────────────────────────────────────────────────────────────
+# ─── CSS (밝은 테마) ─────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
 
 * { font-family: 'Noto Sans KR', sans-serif !important; }
 
-.stApp { background: linear-gradient(135deg, #0a1628 0%, #0d2444 50%, #0a1628 100%); }
+/* 전체 배경 – 밝은 회색 */
+.stApp { background: #f0f4f8 !important; }
 
+/* 사이드바 – 흰색 계열 */
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #071020 0%, #0a1e38 100%) !important;
-    border-right: 1px solid #1a3a5c;
+    background: linear-gradient(180deg, #1e3a5f 0%, #1565c0 100%) !important;
+    border-right: 1px solid #bbdefb;
 }
-[data-testid="stSidebar"] * { color: #cbd5e1 !important; }
-[data-testid="stSidebar"] .stRadio > label { color: #94a3b8 !important; font-weight: 600; font-size: 0.85rem; }
+[data-testid="stSidebar"] * { color: #e3f2fd !important; }
+[data-testid="stSidebar"] .stRadio > label { color: #90caf9 !important; font-weight: 600; font-size: 0.85rem; }
 
-.block-container { padding-top: 1rem !important; max-width: 1400px; }
+.block-container { padding-top: 1rem !important; max-width: 1400px; background: transparent !important; }
 
+/* 메인 컨텐츠 배경 강제 흰색 */
+section[data-testid="stMain"] > div { background: transparent !important; }
+
+/* 헤더 */
 .main-header {
-    background: linear-gradient(135deg, #0f3460 0%, #1565c0 50%, #0288d1 100%);
+    background: linear-gradient(135deg, #1565c0 0%, #1976d2 60%, #0288d1 100%);
     border-radius: 16px; padding: 32px 40px; margin-bottom: 24px;
-    border: 1px solid rgba(33,150,243,0.4);
-    box-shadow: 0 8px 40px rgba(21,101,192,0.5);
+    border: none;
+    box-shadow: 0 4px 20px rgba(21,101,192,0.25);
     position: relative; overflow: hidden;
 }
 .main-header::after {
-    content: ''; position: absolute; top: -60%; right: -10%;
-    width: 350px; height: 350px;
-    background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+    content: ''; position: absolute; top: -50%; right: -5%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
     border-radius: 50%;
 }
 .main-header h1 { color: #fff !important; font-size: 1.9rem !important; font-weight: 900 !important; margin: 0 !important; }
-.main-header .sub { color: #90caf9 !important; font-size: 0.9rem; margin-top: 8px; }
+.main-header .sub { color: #bbdefb !important; font-size: 0.9rem; margin-top: 8px; }
 
 /* 공통 카드 */
 .card {
-    background: rgba(255,255,255,0.035);
-    border: 1px solid rgba(255,255,255,0.09);
+    background: #ffffff;
+    border: 1px solid #e3eaf3;
     border-radius: 12px; padding: 22px 26px; margin: 14px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
-/* 알림 박스 */
-.box-danger  { background:rgba(211,47,47,0.12); border-left:4px solid #f44336; border-radius:0 8px 8px 0; padding:14px 18px; margin:10px 0; color:#ffcdd2; }
-.box-warning { background:rgba(245,124,0,0.12); border-left:4px solid #ff9800; border-radius:0 8px 8px 0; padding:14px 18px; margin:10px 0; color:#ffe0b2; }
-.box-info    { background:rgba(2,136,209,0.12);  border-left:4px solid #0288d1; border-radius:0 8px 8px 0; padding:14px 18px; margin:10px 0; color:#b3e5fc; }
-.box-success { background:rgba(56,142,60,0.12);  border-left:4px solid #4caf50; border-radius:0 8px 8px 0; padding:14px 18px; margin:10px 0; color:#c8e6c9; }
-.box-purple  { background:rgba(103,58,183,0.15); border:1px solid rgba(156,39,176,0.35); border-radius:8px; padding:14px 18px; margin:10px 0; color:#e1bee7; font-family:'JetBrains Mono',monospace; font-size:0.87rem; }
+/* 알림 박스 – 밝은 배경 + 진한 글씨 */
+.box-danger  { background:#fff5f5; border-left:4px solid #e53935; border-radius:0 8px 8px 0; padding:14px 18px; margin:10px 0; color:#b71c1c; }
+.box-warning { background:#fffde7; border-left:4px solid #f9a825; border-radius:0 8px 8px 0; padding:14px 18px; margin:10px 0; color:#7a5800; }
+.box-info    { background:#e3f2fd; border-left:4px solid #1976d2; border-radius:0 8px 8px 0; padding:14px 18px; margin:10px 0; color:#0d47a1; }
+.box-success { background:#f1f8e9; border-left:4px solid #43a047; border-radius:0 8px 8px 0; padding:14px 18px; margin:10px 0; color:#1b5e20; }
+.box-purple  { background:#f3e5f5; border:1px solid #ce93d8; border-radius:8px; padding:14px 18px; margin:10px 0; color:#4a148c; font-family:'JetBrains Mono',monospace; font-size:0.87rem; }
 
 /* 표 */
-.t { width:100%; border-collapse:collapse; margin:14px 0; font-size:0.88rem; color:#e2e8f0; }
-.t th { background:rgba(21,101,192,0.45); padding:11px 14px; text-align:left; border:1px solid rgba(255,255,255,0.1); font-weight:700; color:#90caf9; }
-.t td { padding:9px 14px; border:1px solid rgba(255,255,255,0.07); vertical-align:top; line-height:1.7; }
-.t tr:nth-child(even) td { background:rgba(255,255,255,0.025); }
-.t tr:hover td { background:rgba(33,150,243,0.07); }
+.t { width:100%; border-collapse:collapse; margin:14px 0; font-size:0.88rem; color:#1a2a3a; }
+.t th { background:#1565c0; padding:11px 14px; text-align:left; border:1px solid #1976d2; font-weight:700; color:#ffffff; }
+.t td { padding:9px 14px; border:1px solid #dee6ef; vertical-align:top; line-height:1.7; background:#ffffff; color:#1a2a3a; }
+.t tr:nth-child(even) td { background:#f5f9ff; }
+.t tr:hover td { background:#e8f4fd; }
 
 /* 뱃지 */
 .b  { display:inline-block; padding:2px 9px; border-radius:20px; font-size:0.75rem; font-weight:700; margin:2px 3px; }
-.br { background:rgba(244,67,54,0.2);  color:#ef9a9a; border:1px solid #f44336; }
-.bb { background:rgba(33,150,243,0.2); color:#90caf9; border:1px solid #2196f3; }
-.bg { background:rgba(76,175,80,0.2);  color:#a5d6a7; border:1px solid #4caf50; }
-.bo { background:rgba(255,152,0,0.2);  color:#ffcc80; border:1px solid #ff9800; }
-.bp { background:rgba(156,39,176,0.2); color:#ce93d8; border:1px solid #9c27b0; }
+.br { background:#ffebee; color:#c62828; border:1px solid #ef9a9a; }
+.bb { background:#e3f2fd; color:#1565c0; border:1px solid #90caf9; }
+.bg { background:#e8f5e9; color:#2e7d32; border:1px solid #a5d6a7; }
+.bo { background:#fff8e1; color:#e65100; border:1px solid #ffcc02; }
+.bp { background:#f3e5f5; color:#6a1b9a; border:1px solid #ce93d8; }
 
-/* 강조 */
-.red  { color:#ef9a9a; font-weight:700; }
-.yel  { color:#fff176; font-weight:700; }
-.grn  { color:#a5d6a7; font-weight:700; }
-.blu  { color:#90caf9; font-weight:700; }
+/* 강조 텍스트 */
+.red  { color:#c62828; font-weight:700; }
+.yel  { color:#e65100; font-weight:700; }
+.grn  { color:#2e7d32; font-weight:700; }
+.blu  { color:#1565c0; font-weight:700; }
 
 /* 섹션 제목 */
-.sec-title { font-size:1.25rem; font-weight:800; color:#42a5f5; padding:10px 0 8px; border-bottom:2px solid rgba(66,165,245,0.3); margin-bottom:16px; }
-.sub-title  { font-size:1.02rem; font-weight:700; color:#81d4fa; margin:18px 0 10px; }
+.sec-title { font-size:1.25rem; font-weight:800; color:#1565c0; padding:10px 0 8px; border-bottom:2px solid #bbdefb; margin-bottom:16px; }
+.sub-title  { font-size:1.02rem; font-weight:700; color:#1976d2; margin:18px 0 10px; }
 
 /* 흐름도 */
-.flow { background:rgba(255,255,255,0.04); border:1px solid rgba(33,150,243,0.25); border-radius:9px; padding:13px 18px; margin:7px 0; color:#e3f2fd; }
+.flow { background:#ffffff; border:1px solid #bbdefb; border-radius:9px; padding:13px 18px; margin:7px 0; color:#1a2a3a; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
 .flow-n { display:inline-block; background:#1565c0; color:#fff; width:26px; height:26px; border-radius:50%; text-align:center; line-height:26px; font-weight:700; font-size:0.82rem; margin-right:9px; }
-.flow-arr { text-align:center; color:#42a5f5; font-size:1.3rem; margin:3px 0; }
+.flow-arr { text-align:center; color:#1976d2; font-size:1.3rem; margin:3px 0; }
 
 /* 메트릭 */
-[data-testid="stMetricValue"] { color:#42a5f5 !important; font-weight:700 !important; }
-[data-testid="stMetricLabel"] { color:#90caf9 !important; }
+[data-testid="stMetricValue"] { color:#1565c0 !important; font-weight:700 !important; }
+[data-testid="stMetricLabel"] { color:#37474f !important; }
+[data-testid="stMetric"] { background:#ffffff; border:1px solid #e3eaf3; border-radius:10px; padding:12px 16px; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
 
 /* expander */
-[data-testid="stExpander"] { background:rgba(255,255,255,0.03) !important; border:1px solid rgba(255,255,255,0.09) !important; border-radius:10px !important; }
+[data-testid="stExpander"] { background:#ffffff !important; border:1px solid #dce6f0 !important; border-radius:10px !important; box-shadow:0 1px 4px rgba(0,0,0,0.05) !important; }
+[data-testid="stExpander"] summary { color:#1565c0 !important; font-weight:600 !important; }
 
 /* 탭 */
-.stTabs [data-baseweb="tab-list"] { background:rgba(0,0,0,0.3) !important; border-radius:10px !important; }
-.stTabs [data-baseweb="tab"] { color:#94a3b8 !important; }
-.stTabs [aria-selected="true"] { color:#42a5f5 !important; background:rgba(33,150,243,0.15) !important; border-radius:8px !important; }
+.stTabs [data-baseweb="tab-list"] { background:#e8f0f8 !important; border-radius:10px !important; border:1px solid #cfe0f0 !important; }
+.stTabs [data-baseweb="tab"] { color:#37474f !important; font-weight:600 !important; }
+.stTabs [aria-selected="true"] { color:#1565c0 !important; background:#ffffff !important; border-radius:8px !important; box-shadow:0 1px 4px rgba(0,0,0,0.1) !important; }
 
 /* 체크박스 */
-.stCheckbox label { color:#cbd5e1 !important; font-size:0.9rem !important; }
+.stCheckbox label { color:#2c3e50 !important; font-size:0.9rem !important; }
+
+/* radio 버튼 */
+.stRadio label span { color:#0d47a1 !important; }
 
 /* 하단 */
-.footer { margin-top:48px; padding:18px; border-top:1px solid rgba(255,255,255,0.08); text-align:center; color:#475569; font-size:0.78rem; }
-.footer a { color:#42a5f5; text-decoration:none; }
+.footer { margin-top:48px; padding:18px; border-top:1px solid #dce6f0; text-align:center; color:#546e7a; font-size:0.78rem; background:#f8fafc; border-radius:0 0 12px 12px; }
+.footer a { color:#1565c0; text-decoration:none; }
+
+/* 인라인 강조 박스 (표 내부) */
+div[style*="background:rgba(76,175,80"] { color:#1b5e20 !important; }
+div[style*="background:rgba(244,67,54"] { color:#b71c1c !important; }
+div[style*="background:rgba(255,152,0"] { color:#7a5800 !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -115,10 +132,10 @@ with st.sidebar:
     st.markdown("""
     <div style="text-align:center;padding:18px 0 22px;">
         <div style="font-size:2.8rem;">🏥</div>
-        <div style="font-size:1rem;font-weight:800;color:#42a5f5;line-height:1.5;margin-top:6px;">
+        <div style="font-size:1rem;font-weight:800;color:#1565c0;line-height:1.5;margin-top:6px;">
             타병원 외진 처방<br>실무 가이드
         </div>
-        <div style="font-size:0.72rem;color:#64748b;margin-top:6px;">
+        <div style="font-size:0.72rem;color:#455a64;margin-top:6px;">
             원무·심사 실무자용 | 비요양병원
         </div>
     </div>
@@ -144,8 +161,8 @@ with st.sidebar:
 
     st.markdown("---")
     st.markdown("""
-    <div style="font-size:0.75rem;color:#475569;line-height:1.9;padding:4px 0;">
-        📌 <b style="color:#64748b;">관련 법령</b><br>
+    <div style="font-size:0.75rem;color:#37474f;line-height:1.9;padding:4px 0;">
+        📌 <b style="color:#455a64;">관련 법령</b><br>
         · 요양급여기준 규칙 별표1<br>
         · 보험급여팀-204호(2008.1.24.)<br>
         · 약사법 제23조 제4항<br>
@@ -208,7 +225,7 @@ if menu == "🏠 개요 및 기본원칙":
         st.markdown(f"""
         <div class="box-purple">
             <b>📜 {title}</b><br>
-            <span style="color:#ce93d8;">{desc}</span>
+            <span style="color:#6a1b9a;">{desc}</span>
         </div>
         """, unsafe_allow_html=True)
 
@@ -227,8 +244,8 @@ if menu == "🏠 개요 및 기본원칙":
         st.markdown(f"""
         <div class="flow">
             <span class="flow-n">{num}</span>
-            <b style="color:#42a5f5;">{title}</b>
-            <span style="color:#94a3b8; margin-left:8px;">→ {desc}</span>
+            <b style="color:#1565c0;">{title}</b>
+            <span style="color:#37474f; margin-left:8px;">→ {desc}</span>
         </div>
         """, unsafe_allow_html=True)
         if i < len(steps)-1:
@@ -453,10 +470,10 @@ elif menu == "💊 원내처방 원칙 & 사유":
         ]
         for title, desc in items:
             st.markdown(f"""
-            <div style="background:rgba(76,175,80,0.08);border-left:3px solid #4caf50;
-            padding:10px 14px;margin:6px 0;border-radius:0 7px 7px 0;color:#c8e6c9;font-size:0.88rem;">
-                <b style="color:#a5d6a7;">✅ {title}</b><br>
-                <span style="color:#94a3b8;">{desc}</span>
+            <div style="background:#f1f8e9;border-left:3px solid #4caf50;
+            padding:10px 14px;margin:6px 0;border-radius:0 7px 7px 0;color:#1b5e20;font-size:0.88rem;">
+                <b style="color:#2e7d32;">✅ {title}</b><br>
+                <span style="color:#37474f;">{desc}</span>
             </div>
             """, unsafe_allow_html=True)
 
@@ -477,10 +494,10 @@ elif menu == "💊 원내처방 원칙 & 사유":
         for title, desc, color in exceptions:
             bc, tc, bg = colors[color]
             st.markdown(f"""
-            <div style="background:rgba(255,152,0,0.07);border:1px solid rgba(255,152,0,0.25);
+            <div style="background:#fffde7;border:1px solid #ffe082;
             padding:12px 16px;margin:8px 0;border-radius:8px;font-size:0.87rem;">
-                <b style="color:#ffcc80;">⚠️ {title}</b><br>
-                <span style="color:#94a3b8;line-height:1.7;">{desc}</span>
+                <b style="color:#e65100;">⚠️ {title}</b><br>
+                <span style="color:#37474f;line-height:1.7;">{desc}</span>
             </div>
             """, unsafe_allow_html=True)
 
@@ -504,14 +521,14 @@ elif menu == "💊 원내처방 원칙 & 사유":
             <td><span class="grn">약제 있음 (B기관)</span></td>
             <td>① B기관에서 <b>원내처방</b> 및 투약<br>② 처방내역 A기관에 서면 통보<br>③ A기관이 해당 내역 포함하여 HIRA 청구</td>
         </tr>
-        <tr style="background:rgba(255,152,0,0.06);">
+        <tr style="background:#fff8e1;">
             <td><span class="b bo">CASE B</span></td>
             <td><span class="yel">약제 없음 (B기관)</span></td>
             <td>① B기관에서 <b>처방내역만 A기관에 통보</b> (원외처방전 발행 절대 불가)<br>② A기관에서 해당 약제 <b>원내처방</b> 및 투약<br>③ A기관이 HIRA 청구</td>
         </tr>
         <tr style="background:rgba(156,39,176,0.06);">
             <td><span class="b bp">CASE C</span></td>
-            <td><span style="color:#ce93d8;font-weight:700;">정신질환 위험군</span></td>
+            <td><span style="color:#6a1b9a;font-weight:700;">정신질환 위험군</span></td>
             <td>① 조현병·조울증 등 위험 환자 해당 여부 확인<br>② 해당 시 원내 직접조제 가능 (약사법 제23조④③ 적용)<br>③ 원외처방전 발행 불가 원칙 유지</td>
         </tr>
     </table>
@@ -568,7 +585,7 @@ elif menu == "🚫 원외처방 안 되는 사유":
         st.markdown(f"""<tr>
             <td>{situation}</td>
             <td><span class="{color}">{status}</span></td>
-            <td style="color:#94a3b8;font-size:0.85rem;">{reason}</td>
+            <td style="color:#37474f;font-size:0.85rem;">{reason}</td>
         </tr>""", unsafe_allow_html=True)
     st.markdown("</table>", unsafe_allow_html=True)
 
@@ -594,10 +611,10 @@ elif menu == "🚫 원외처방 안 되는 사유":
     ]
     for i, (title, impact) in enumerate(mistakes, 1):
         st.markdown(f"""
-        <div style="background:rgba(244,67,54,0.08);border-left:3px solid #f44336;
+        <div style="background:#fff5f5;border-left:3px solid #f44336;
         padding:11px 14px;margin:7px 0;border-radius:0 7px 7px 0;font-size:0.89rem;">
-            <b style="color:#ef9a9a;">실수 {i}: {title}</b><br>
-            <span style="color:#94a3b8;">📉 결과: {impact}</span>
+            <b style="color:#c62828;">실수 {i}: {title}</b><br>
+            <span style="color:#37474f;">📉 결과: {impact}</span>
         </div>
         """, unsafe_allow_html=True)
 
@@ -620,21 +637,21 @@ elif menu == "📋 청구 방법 & 수가 산정":
 
     st.markdown('<div class="sub-title">💡 수가 산정 공식</div>', unsafe_allow_html=True)
     st.markdown("""
-    <div style="background:rgba(103,58,183,0.18);border:1px solid rgba(156,39,176,0.4);
+    <div style="background:#ede7f6;border:1px solid #ce93d8;
     border-radius:12px;padding:22px 26px;margin:14px 0;">
-        <div style="font-size:1.05rem;font-weight:700;color:#ce93d8;margin-bottom:14px;font-family:'JetBrains Mono',monospace;">
+        <div style="font-size:1.05rem;font-weight:700;color:#6a1b9a;margin-bottom:14px;font-family:'JetBrains Mono',monospace;">
             📐 외진 수가 계산 공식
         </div>
-        <div style="font-size:0.95rem;line-height:2.4;font-family:'JetBrains Mono',monospace;color:#e2e8f0;">
-            <span style="color:#80deea;">진료비</span> &nbsp;=&nbsp;
-            <span style="color:#a5d6a7;">상대가치점수</span> &nbsp;×&nbsp;
-            <span style="color:#ffcc80;">의뢰받은 기관의 유형별 점수당 단가</span> &nbsp;×&nbsp;
-            <span style="color:#f48fb1;">의뢰받은 기관의 종별 가산율</span>
+        <div style="font-size:0.95rem;line-height:2.4;font-family:'JetBrains Mono',monospace;color:#1a2a3a;">
+            <span style="color:#006064;">진료비</span> &nbsp;=&nbsp;
+            <span style="color:#2e7d32;">상대가치점수</span> &nbsp;×&nbsp;
+            <span style="color:#e65100;">의뢰받은 기관의 유형별 점수당 단가</span> &nbsp;×&nbsp;
+            <span style="color:#880e4f;">의뢰받은 기관의 종별 가산율</span>
             <br><br>
-            <span style="color:#80deea;">본인부담금</span> &nbsp;=&nbsp;
-            진료비 &nbsp;×&nbsp; <span style="color:#a5d6a7;">의뢰한 기관(입원기관)의 입원 본인부담률</span>
+            <span style="color:#006064;">본인부담금</span> &nbsp;=&nbsp;
+            진료비 &nbsp;×&nbsp; <span style="color:#2e7d32;">의뢰한 기관(입원기관)의 입원 본인부담률</span>
         </div>
-        <div style="margin-top:14px;font-size:0.82rem;color:#9e9e9e;">
+        <div style="margin-top:14px;font-size:0.82rem;color:#546e7a;">
             ※ 단가와 종별 가산율은 의뢰받은 기관 기준 / 본인부담률은 의뢰한 기관(원 입원기관) 기준
         </div>
     </div>
@@ -651,7 +668,7 @@ elif menu == "📋 청구 방법 & 수가 산정":
             <tr><td>병원</td><td><span class="blu">20%</span></td><td>병원 기준</td></tr>
             <tr><td>의원</td><td><span class="blu">15%</span></td><td>의원 기준</td></tr>
         </table>
-        <div style="font-size:0.78rem;color:#64748b;margin-top:4px;">
+        <div style="font-size:0.78rem;color:#455a64;margin-top:4px;">
             ※ <b>의뢰받은 기관</b>의 종별 가산율 적용
         </div>
         """, unsafe_allow_html=True)
@@ -668,7 +685,7 @@ elif menu == "📋 청구 방법 & 수가 산정":
             <tr><td>의료급여 2종</td><td><span class="yel">10%</span></td></tr>
             <tr><td>차상위 1종</td><td><span class="grn">0~5%</span></td></tr>
         </table>
-        <div style="font-size:0.78rem;color:#64748b;margin-top:4px;">
+        <div style="font-size:0.78rem;color:#455a64;margin-top:4px;">
             ※ <b>의뢰한 기관(원 입원기관)</b>의 입원 본인부담률 적용
         </div>
         """, unsafe_allow_html=True)
@@ -729,14 +746,14 @@ elif menu == "📋 청구 방법 & 수가 산정":
     with st.expander("💡 실무 계산 예시 (가상 케이스)"):
         st.markdown("""
         <div class="card">
-            <b style="color:#42a5f5;">📋 케이스 예시</b><br>
-            <span style="color:#94a3b8;">
+            <b style="color:#1565c0;">📋 케이스 예시</b><br>
+            <span style="color:#37474f;">
             A병원(종합병원) 입원 환자 → B의원(의원급)으로 피부과 외진 의뢰<br>
             B의원에서 외래 진찰 실시 (초진 진찰료: 상대가치점수 가정 30점)
             </span>
             <br><br>
-            <b style="color:#81d4fa;">수가 계산:</b><br>
-            <div style="font-family:'JetBrains Mono',monospace;font-size:0.87rem;color:#e2e8f0;margin-top:8px;line-height:2;">
+            <b style="color:#1976d2;">수가 계산:</b><br>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.87rem;color:#1a2a3a;margin-top:8px;line-height:2;">
                 • 적용 단가: <span class="yel">의원 점수당 단가</span> (B의원 기준)<br>
                 • 적용 가산율: <span class="yel">의원 종별 가산율 15%</span> (B의원 기준)<br>
                 • 적용 본인부담률: <span class="grn">입원 본인부담률 20%</span> (A병원 입원 기준)<br>
@@ -1264,8 +1281,8 @@ elif menu == "⚡ 특수 케이스 Q&A":
     for qa in qas:
         with st.expander(f"{qa['tag']} &nbsp; {qa['q']}"):
             st.markdown(f"""
-            <div style="padding:16px 20px;background:rgba(255,255,255,0.025);border-radius:8px;
-            color:#e2e8f0;line-height:1.9;font-size:0.91rem;">
+            <div style="padding:16px 20px;background:#f5f9ff;border-radius:8px;
+            color:#1a2a3a;line-height:1.9;font-size:0.91rem;">
                 {qa['a']}
             </div>
             <div class="box-purple" style="margin-top:12px;">
