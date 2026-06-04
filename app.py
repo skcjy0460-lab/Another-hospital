@@ -193,10 +193,10 @@ if menu == "🏠 개요 및 기본원칙":
     st.markdown('<div class="sec-title">📖 타병원 외진 처방 – 기본 개념과 원칙</div>', unsafe_allow_html=True)
 
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("적용 대상", "비요양병원", "입원환자 외진")
+    c1.metric("적용 대상", "병원(요양병원 제외)", "입원환자 외진 시")
     c2.metric("약제 원칙", "원내처방", "원외처방 원칙적 불가")
     c3.metric("청구 주체", "의뢰한 기관", "외진 내역 포함")
-    c4.metric("본인부담", "입원 기준", "외래 기준 아님")
+    c4.metric("본인부담", "입원 기준 적용", "외래 기준 아님")
 
     st.markdown("""
     <div class="box-info">
@@ -273,7 +273,7 @@ elif menu == "💰 본인부담 100% 적용 상황":
     </div>
     """, unsafe_allow_html=True)
 
-    with st.expander("📌 상황 1 – 요양급여의뢰서(진료의뢰서) 없이 상급종합병원 이용", expanded=True):
+    with st.expander("📌 상황 1 – 의뢰서 없이 상급종합병원 이용", expanded=True):
         st.markdown("""
         <table class="t">
             <tr><th>구분</th><th>내용</th><th>본인부담률</th><th>비고</th></tr>
@@ -317,7 +317,7 @@ elif menu == "💰 본인부담 100% 적용 상황":
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("📌 상황 2 – 입원 중 의뢰 없이 임의로 타기관 외래 방문"):
+    with st.expander("📌 상황 2 – 입원 중 의뢰 없이 임의로 타기관 방문"):
         st.markdown("""
         <div class="box-danger">
             <b>🚫 원칙:</b> 입원환자가 의뢰서 없이 임의로 타기관을 이용하면 <b>진료비 전액 본인부담</b>입니다.
@@ -352,7 +352,7 @@ elif menu == "💰 본인부담 100% 적용 상황":
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("📌 상황 3 – 의뢰서 원본 미제출·사본 제출·유효기간 초과"):
+    with st.expander("📌 상황 3 – 의뢰서 원본 미제출·사본·유효기간 초과"):
         st.markdown("""
         <table class="t">
             <tr><th>상황</th><th>처리 방법</th><th>급여 적용</th></tr>
@@ -383,7 +383,7 @@ elif menu == "💰 본인부담 100% 적용 상황":
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("📌 상황 4 – 한방병원 입원 중 양방 외진 (청구주체 혼동 주의)"):
+    with st.expander("📌 상황 4 – 한방병원 입원 중 양방 외진"):
         st.markdown("""
         <div class="box-warning">
             이 경우 <b>청구 주체가 달라</b> 혼동이 많습니다. 기관 유형에 따라 반드시 구분하세요.
@@ -406,7 +406,7 @@ elif menu == "💰 본인부담 100% 적용 상황":
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("📌 상황 5 – 의료급여 수급권자 타기관 이용 기준"):
+    with st.expander("📌 상황 5 – 의료급여 수급권자 타기관 이용"):
         st.markdown("""
         <table class="t">
             <tr><th>수급권자 유형</th><th>이용 조건</th><th>본인부담</th></tr>
@@ -516,7 +516,7 @@ elif menu == "💊 원내처방 원칙 & 사유":
             <td>타기관 B</td>
             <td>외래 진료 실시 → 처방 필요 판단 → <b>B기관 원내 약제 재고 확인</b></td>
         </tr>
-        <tr style="background:rgba(76,175,80,0.07);">
+        <tr style="background:#f1f8e9;">
             <td><span class="b bg">CASE A</span></td>
             <td><span class="grn">약제 있음 (B기관)</span></td>
             <td>① B기관에서 <b>원내처방</b> 및 투약<br>② 처방내역 A기관에 서면 통보<br>③ A기관이 해당 내역 포함하여 HIRA 청구</td>
@@ -526,7 +526,7 @@ elif menu == "💊 원내처방 원칙 & 사유":
             <td><span class="yel">약제 없음 (B기관)</span></td>
             <td>① B기관에서 <b>처방내역만 A기관에 통보</b> (원외처방전 발행 절대 불가)<br>② A기관에서 해당 약제 <b>원내처방</b> 및 투약<br>③ A기관이 HIRA 청구</td>
         </tr>
-        <tr style="background:rgba(156,39,176,0.06);">
+        <tr style="background:#f9f0ff;">
             <td><span class="b bp">CASE C</span></td>
             <td><span style="color:#6a1b9a;font-weight:700;">정신질환 위험군</span></td>
             <td>① 조현병·조울증 등 위험 환자 해당 여부 확인<br>② 해당 시 원내 직접조제 가능 (약사법 제23조④③ 적용)<br>③ 원외처방전 발행 불가 원칙 유지</td>
@@ -570,34 +570,75 @@ elif menu == "🚫 원외처방 안 되는 사유":
     """, unsafe_allow_html=True)
 
     st.markdown('<div class="sub-title">🚫 원외처방 금지 상황 전체 목록</div>', unsafe_allow_html=True)
-    rows = [
-        ("입원환자 약제 (모든 경우)", "원외처방 금지", "요양급여기준 별표1 바항", "danger"),
-        ("타기관 외진 후 처방 (비요양병원 입원 중)", "원외처방 금지", "입원 상태 유지 중 – 원내처방 원칙", "danger"),
-        ("주사제·수액류", "원외처방 금지", "요양기관 내에서만 투여 가능", "danger"),
-        ("마약류 (입원환자)", "원외처방 엄격 제한", "마약류 관리에 관한 법률 별도 기준", "warning"),
-        ("정신건강의학과 위험 입원환자", "원내 직접조제 원칙", "약사법 제23조④③ – 조현병·조울증 위험군", "warning"),
-        ("요양병원 정액수가 입원환자 외진 약제", "원내처방 원칙", "정액수가에 약제비 포함 – 별도 산정 불가", "warning"),
-        ("외진 시 약제 미구비로 인한 임의 원외처방", "원외처방 금지", "약제 없으면 입원기관에 통보 후 원내처방 해야 함", "danger"),
-    ]
-    st.markdown('<table class="t"><tr><th>상황</th><th>원외처방 여부</th><th>근거/이유</th></tr>', unsafe_allow_html=True)
-    for situation, status, reason, level in rows:
-        color = "red" if level == "danger" else "yel"
-        st.markdown(f"""<tr>
-            <td>{situation}</td>
-            <td><span class="{color}">{status}</span></td>
-            <td style="color:#37474f;font-size:0.85rem;">{reason}</td>
-        </tr>""", unsafe_allow_html=True)
-    st.markdown("</table>", unsafe_allow_html=True)
+    st.markdown("""
+    <table class="t">
+        <tr><th width="250">상황</th><th width="160">원외처방 여부</th><th>근거 / 이유</th></tr>
+        <tr>
+            <td>입원환자 약제 (모든 경우)</td>
+            <td><span class="red">원외처방 금지</span></td>
+            <td>요양급여기준 별표1 바항 – 요양기관 직접 구입·지급 의무</td>
+        </tr>
+        <tr>
+            <td>타기관 외진 후 처방 (입원 상태 유지 중)</td>
+            <td><span class="red">원외처방 금지</span></td>
+            <td>입원 중이므로 원내처방 원칙 적용</td>
+        </tr>
+        <tr>
+            <td>주사제·수액류</td>
+            <td><span class="red">원외처방 금지</span></td>
+            <td>요양기관 내에서만 투여 가능한 약제</td>
+        </tr>
+        <tr>
+            <td>마약류 (입원환자)</td>
+            <td><span class="yel">원외처방 엄격 제한</span></td>
+            <td>마약류 관리에 관한 법률 별도 기준 적용</td>
+        </tr>
+        <tr>
+            <td>정신건강의학과 위험 입원환자<br>(조현병·조울증 등 위험군)</td>
+            <td><span class="yel">원내 직접조제 원칙</span></td>
+            <td>약사법 제23조④③ – 자신/타인 해칠 우려 시</td>
+        </tr>
+        <tr>
+            <td>요양병원 정액수가 입원환자 외진 약제</td>
+            <td><span class="yel">원내처방 원칙</span></td>
+            <td>정액수가에 약제비 포함 – 별도 원외처방 불가</td>
+        </tr>
+        <tr>
+            <td>외진 기관 약제 미구비로 인한 임의 원외처방</td>
+            <td><span class="red">원외처방 금지</span></td>
+            <td>약제 없으면 입원기관에 통보 → 입원기관 원내처방 해야 함</td>
+        </tr>
+    </table>
+    """, unsafe_allow_html=True)
 
     st.markdown('<div class="sub-title">✅ 원외처방이 허용되는 예외 상황</div>', unsafe_allow_html=True)
-    exceptions = [
-        ("외래 환자 (비입원)", "순수 외래환자는 원외처방이 원칙 (약사법 제23조 기준)"),
-        ("퇴원 시 처방전", "퇴원 확정 후 발급하는 퇴원 처방전은 원외처방 가능"),
-        ("희귀의약품·특수약제", "원내 구비 불가한 경우 예외적 원외처방 가능 (개별 고시 확인 필수)"),
-        ("일부 항암제 외래 처방", "외래 항암화학요법 시 처방전 발급 가능 (급여기준 별도 확인)"),
-    ]
-    for title, desc in exceptions:
-        st.markdown(f'<div class="box-success"><b>✅ {title}</b><br>{desc}</div>', unsafe_allow_html=True)
+    st.markdown("""
+    <div class="box-success">
+        <b>✅ 외래 환자 (비입원)</b><br>
+        순수 외래환자는 원외처방이 원칙 (약사법 제23조 기준). 입원 상태가 아닌 경우에 해당.
+    </div>
+    <div class="box-success">
+        <b>✅ 희귀의약품·특수약제</b><br>
+        원내 구비 불가한 경우 예외적 원외처방 가능 (개별 고시 확인 필수)
+    </div>
+    <div class="box-success">
+        <b>✅ 일부 항암제 외래 처방</b><br>
+        외래 항암화학요법 시 처방전 발급 가능 (급여기준 별도 확인)
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="box-danger">
+        <b>🚫 퇴원 시 처방전 – 원외처방 불가 (주의!):</b><br>
+        퇴원 당일 발급하는 처방전도 <b>입원 중 발급이므로 원칙적으로 원외처방 불가</b>입니다.<br><br>
+        · 퇴원 후 외래 첫 방문 시 처방전을 발급하는 것이 원칙<br>
+        · 단, 퇴원 당일 퇴원처방전은 실무적으로 발급되고 있으나, 
+          <b>이는 입원기간이 아닌 퇴원 당일 외래 처방으로 구분</b>되어 처리됨<br>
+        · 요양급여기준상 입원 중 원외처방전 발행은 원칙적으로 불가하므로
+          <b>퇴원 확정 전 미리 원외처방 처리하는 것은 절대 불가</b><br>
+        · 퇴원 당일 처방: 퇴원일자로 외래 처방전 발급 (입원 청구와 구분하여 처리)
+    </div>
+    """, unsafe_allow_html=True)
 
     st.markdown('<div class="sub-title">⛔ 원무직원 현장 실수 사례 TOP 7</div>', unsafe_allow_html=True)
     mistakes = [
