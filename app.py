@@ -71,7 +71,7 @@ section[data-testid="stMain"] > div { background: transparent !important; }
 .t tr:hover td { background:#e8f4fd; }
 
 /* 뱃지 */
-.b  { display:inline-block; padding:2px 9px; border-radius:20px; font-size:0.75rem; font-weight:700; margin:2px 3px; }
+.b  { display:inline-block; padding:3px 10px; border-radius:20px; font-size:0.78rem; font-weight:700; margin:2px 3px; white-space:nowrap; }
 .br { background:#ffebee; color:#c62828; border:1px solid #ef9a9a; }
 .bb { background:#e3f2fd; color:#1565c0; border:1px solid #90caf9; }
 .bg { background:#e8f5e9; color:#2e7d32; border:1px solid #a5d6a7; }
@@ -90,7 +90,7 @@ section[data-testid="stMain"] > div { background: transparent !important; }
 
 /* 흐름도 */
 .flow { background:#ffffff; border:1px solid #bbdefb; border-radius:9px; padding:13px 18px; margin:7px 0; color:#1a2a3a; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
-.flow-n { display:inline-block; background:#1565c0; color:#fff; width:26px; height:26px; border-radius:50%; text-align:center; line-height:26px; font-weight:700; font-size:0.82rem; margin-right:9px; }
+.flow-n { display:inline-flex; align-items:center; justify-content:center; background:#1565c0; color:#fff; min-width:26px; width:26px; height:26px; border-radius:50%; text-align:center; font-weight:700; font-size:0.82rem; margin-right:9px; flex-shrink:0; }
 .flow-arr { text-align:center; color:#1976d2; font-size:1.3rem; margin:3px 0; }
 
 /* 메트릭 */
@@ -273,7 +273,7 @@ elif menu == "💰 본인부담 100% 적용 상황":
     </div>
     """, unsafe_allow_html=True)
 
-    with st.expander("📌 상황 1 – 의뢰서 없이 상급종합병원 이용", expanded=True):
+    with st.expander("📌 상황1 - 의뢰서 없이 상급종합병원 이용", expanded=True):
         st.markdown("""
         <table class="t">
             <tr><th>구분</th><th>내용</th><th>본인부담률</th><th>비고</th></tr>
@@ -317,7 +317,7 @@ elif menu == "💰 본인부담 100% 적용 상황":
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("📌 상황 2 – 입원 중 의뢰 없이 임의로 타기관 방문"):
+    with st.expander("📌 상황2 - 입원 중 의뢰 없이 임의로 타기관 방문"):
         st.markdown("""
         <div class="box-danger">
             <b>🚫 원칙:</b> 입원환자가 의뢰서 없이 임의로 타기관을 이용하면 <b>진료비 전액 본인부담</b>입니다.
@@ -352,7 +352,7 @@ elif menu == "💰 본인부담 100% 적용 상황":
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("📌 상황 3 – 의뢰서 원본 미제출·사본·유효기간 초과"):
+    with st.expander("📌 상황3 - 의뢰서 원본 미제출·사본·유효기간 초과"):
         st.markdown("""
         <table class="t">
             <tr><th>상황</th><th>처리 방법</th><th>급여 적용</th></tr>
@@ -383,7 +383,7 @@ elif menu == "💰 본인부담 100% 적용 상황":
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("📌 상황 4 – 한방병원 입원 중 양방 외진"):
+    with st.expander("📌 상황4 - 한방병원 입원 중 양방 외진"):
         st.markdown("""
         <div class="box-warning">
             이 경우 <b>청구 주체가 달라</b> 혼동이 많습니다. 기관 유형에 따라 반드시 구분하세요.
@@ -406,7 +406,7 @@ elif menu == "💰 본인부담 100% 적용 상황":
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("📌 상황 5 – 의료급여 수급권자 타기관 이용"):
+    with st.expander("📌 상황5 - 의료급여 수급권자 타기관 이용"):
         st.markdown("""
         <table class="t">
             <tr><th>수급권자 유형</th><th>이용 조건</th><th>본인부담</th></tr>
@@ -505,29 +505,53 @@ elif menu == "💊 원내처방 원칙 & 사유":
 
     st.markdown("""
     <table class="t">
-        <tr><th width="80">단계</th><th width="160">주체</th><th>처리 내용</th></tr>
         <tr>
-            <td><span class="b bb">STEP 1</span></td>
+            <th style="width:100px;text-align:center;">단계</th>
+            <th style="width:160px;">주체</th>
+            <th>처리 내용</th>
+        </tr>
+        <tr>
+            <td style="text-align:center;vertical-align:middle;">
+                <span style="display:inline-block;background:#1565c0;color:#fff;
+                padding:4px 10px;border-radius:6px;font-weight:700;font-size:0.82rem;
+                white-space:nowrap;">STEP 1</span>
+            </td>
             <td>입원기관 A</td>
             <td>진료의뢰서 발급 → 환자를 타기관 B로 외진 의뢰</td>
         </tr>
         <tr>
-            <td><span class="b bb">STEP 2</span></td>
+            <td style="text-align:center;vertical-align:middle;">
+                <span style="display:inline-block;background:#1565c0;color:#fff;
+                padding:4px 10px;border-radius:6px;font-weight:700;font-size:0.82rem;
+                white-space:nowrap;">STEP 2</span>
+            </td>
             <td>타기관 B</td>
             <td>외래 진료 실시 → 처방 필요 판단 → <b>B기관 원내 약제 재고 확인</b></td>
         </tr>
         <tr style="background:#f1f8e9;">
-            <td><span class="b bg">CASE A</span></td>
+            <td style="text-align:center;vertical-align:middle;">
+                <span style="display:inline-block;background:#2e7d32;color:#fff;
+                padding:4px 10px;border-radius:6px;font-weight:700;font-size:0.82rem;
+                white-space:nowrap;">CASE A</span>
+            </td>
             <td><span class="grn">약제 있음 (B기관)</span></td>
             <td>① B기관에서 <b>원내처방</b> 및 투약<br>② 처방내역 A기관에 서면 통보<br>③ A기관이 해당 내역 포함하여 HIRA 청구</td>
         </tr>
         <tr style="background:#fff8e1;">
-            <td><span class="b bo">CASE B</span></td>
+            <td style="text-align:center;vertical-align:middle;">
+                <span style="display:inline-block;background:#e65100;color:#fff;
+                padding:4px 10px;border-radius:6px;font-weight:700;font-size:0.82rem;
+                white-space:nowrap;">CASE B</span>
+            </td>
             <td><span class="yel">약제 없음 (B기관)</span></td>
             <td>① B기관에서 <b>처방내역만 A기관에 통보</b> (원외처방전 발행 절대 불가)<br>② A기관에서 해당 약제 <b>원내처방</b> 및 투약<br>③ A기관이 HIRA 청구</td>
         </tr>
         <tr style="background:#f9f0ff;">
-            <td><span class="b bp">CASE C</span></td>
+            <td style="text-align:center;vertical-align:middle;">
+                <span style="display:inline-block;background:#6a1b9a;color:#fff;
+                padding:4px 10px;border-radius:6px;font-weight:700;font-size:0.82rem;
+                white-space:nowrap;">CASE C</span>
+            </td>
             <td><span style="color:#6a1b9a;font-weight:700;">정신질환 위험군</span></td>
             <td>① 조현병·조울증 등 위험 환자 해당 여부 확인<br>② 해당 시 원내 직접조제 가능 (약사법 제23조④③ 적용)<br>③ 원외처방전 발행 불가 원칙 유지</td>
         </tr>
@@ -543,7 +567,7 @@ elif menu == "💊 원내처방 원칙 & 사유":
     </div>
     """, unsafe_allow_html=True)
 
-    with st.expander("🧪 원내처방 vs 원외처방 – 비교 정리"):
+    with st.expander("🧪 원내처방 vs 원외처방 비교 정리"):
         st.markdown("""
         <table class="t">
             <tr><th>항목</th><th>원내처방</th><th>원외처방</th></tr>
@@ -734,15 +758,30 @@ elif menu == "📋 청구 방법 & 수가 산정":
     st.markdown('<div class="sub-title">📝 청구 시 특정내역 기재 방법</div>', unsafe_allow_html=True)
     st.markdown("""
     <table class="t">
-        <tr><th width="130">특정내역 코드</th><th width="220">항목명</th><th>기재 내용</th><th width="140">기재 기관</th></tr>
         <tr>
-            <td><span class="b bp">MJ006</span></td>
+            <th style="width:130px;text-align:center;">특정내역 코드</th>
+            <th style="width:200px;">항목명</th>
+            <th>기재 내용</th>
+            <th style="width:150px;">기재 기관</th>
+        </tr>
+        <tr>
+            <td style="text-align:center;">
+                <span style="display:inline-block;background:#4a148c;color:#fff;
+                padding:4px 12px;border-radius:6px;font-weight:700;font-size:0.85rem;
+                white-space:nowrap;">MJ006</span>
+            </td>
             <td>의뢰/의뢰받은 기관 정보</td>
-            <td>의뢰받은 의료기관기호 / 의뢰일자 기재 (예: 12345678/20240101)</td>
+            <td>의뢰받은 의료기관기호 / 의뢰일자 기재<br>
+                <span style="font-size:0.82rem;color:#455a64;">예: 12345678/20240101</span>
+            </td>
             <td>의뢰한 기관 (입원기관)</td>
         </tr>
         <tr>
-            <td><span class="b bp">MT015</span></td>
+            <td style="text-align:center;">
+                <span style="display:inline-block;background:#4a148c;color:#fff;
+                padding:4px 12px;border-radius:6px;font-weight:700;font-size:0.85rem;
+                white-space:nowrap;">MT015</span>
+            </td>
             <td>진료형태 구분코드</td>
             <td>'69' 기재 – 의뢰받아 시행한 타기관 진료 건임을 표시</td>
             <td>해당 시 기재</td>
@@ -750,7 +789,7 @@ elif menu == "📋 청구 방법 & 수가 산정":
     </table>
     """, unsafe_allow_html=True)
 
-    with st.expander("🚗 자동차보험 입원환자 외진 청구 (건강보험과 다름!)"):
+    with st.expander("🚗 자동차보험 입원환자 외진 청구 - 건강보험과 다름"):
         st.markdown("""
         <div class="box-warning">
             <b>⚠️ 자동차보험은 건강보험과 청구 방식이 다릅니다!</b>
@@ -784,7 +823,7 @@ elif menu == "📋 청구 방법 & 수가 산정":
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("💡 실무 계산 예시 (가상 케이스)"):
+    with st.expander("💡 실무 계산 예시 - 가상 케이스"):
         st.markdown("""
         <div class="card">
             <b style="color:#1565c0;">📋 케이스 예시</b><br>
@@ -1320,10 +1359,16 @@ elif menu == "⚡ 특수 케이스 Q&A":
     ]
 
     for qa in qas:
-        with st.expander(f"{qa['tag']} &nbsp; {qa['q']}"):
+        # tag에서 이모지만 추출 (첫 단어), expander 제목은 순수 텍스트
+        tag_emoji = qa['tag'].split()[0]
+        expander_label = f"{tag_emoji} {qa['q']}"
+        with st.expander(expander_label):
             st.markdown(f"""
             <div style="padding:16px 20px;background:#f5f9ff;border-radius:8px;
             color:#1a2a3a;line-height:1.9;font-size:0.91rem;">
+                <span style="display:inline-block;background:#e3f2fd;color:#1565c0;
+                font-size:0.75rem;font-weight:700;padding:2px 10px;border-radius:20px;
+                margin-bottom:10px;">{qa['tag']}</span><br><br>
                 {qa['a']}
             </div>
             <div class="box-purple" style="margin-top:12px;">
