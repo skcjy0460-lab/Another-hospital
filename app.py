@@ -94,9 +94,11 @@ section[data-testid="stMain"] > div { background: transparent !important; }
 .flow-arr { text-align:center; color:#1976d2; font-size:1.3rem; margin:3px 0; }
 
 /* 메트릭 */
-[data-testid="stMetricValue"] { color:#1565c0 !important; font-weight:700 !important; }
-[data-testid="stMetricLabel"] { color:#37474f !important; }
-[data-testid="stMetric"] { background:#ffffff; border:1px solid #e3eaf3; border-radius:10px; padding:12px 16px; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
+[data-testid="stMetricValue"] { color:#1565c0 !important; font-weight:700 !important; font-size:1rem !important; }
+[data-testid="stMetricLabel"] { color:#37474f !important; font-size:0.78rem !important; }
+[data-testid="stMetricDelta"] { font-size:0.75rem !important; }
+[data-testid="stMetric"] { background:#ffffff; border:1px solid #e3eaf3; border-radius:10px; padding:10px 14px; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
+[data-testid="stMetric"] > div { gap:2px !important; }
 
 /* expander */
 [data-testid="stExpander"] { background:#ffffff !important; border:1px solid #dce6f0 !important; border-radius:10px !important; box-shadow:0 1px 4px rgba(0,0,0,0.05) !important; }
