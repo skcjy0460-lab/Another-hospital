@@ -273,7 +273,7 @@ elif menu == "💰 본인부담 100% 적용 상황":
     </div>
     """, unsafe_allow_html=True)
 
-    with st.expander("📌 상황1 - 의뢰서 없이 상급종합병원 이용", expanded=True):
+    with st.expander("[상황1] 의뢰서 없이 상급종합병원 이용", expanded=True):
         st.markdown("""
         <table class="t">
             <tr><th>구분</th><th>내용</th><th>본인부담률</th><th>비고</th></tr>
@@ -317,7 +317,7 @@ elif menu == "💰 본인부담 100% 적용 상황":
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("📌 상황2 - 입원 중 의뢰 없이 임의로 타기관 방문"):
+    with st.expander("[상황2] 입원 중 의뢰 없이 임의로 타기관 방문"):
         st.markdown("""
         <div class="box-danger">
             <b>🚫 원칙:</b> 입원환자가 의뢰서 없이 임의로 타기관을 이용하면 <b>진료비 전액 본인부담</b>입니다.
@@ -352,7 +352,7 @@ elif menu == "💰 본인부담 100% 적용 상황":
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("📌 상황3 - 의뢰서 원본 미제출·사본·유효기간 초과"):
+    with st.expander("[상황3] 의뢰서 원본 미제출·사본·유효기간 초과"):
         st.markdown("""
         <table class="t">
             <tr><th>상황</th><th>처리 방법</th><th>급여 적용</th></tr>
@@ -383,7 +383,7 @@ elif menu == "💰 본인부담 100% 적용 상황":
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("📌 상황4 - 한방병원 입원 중 양방 외진"):
+    with st.expander("[상황4] 한방병원 입원 중 양방 외진"):
         st.markdown("""
         <div class="box-warning">
             이 경우 <b>청구 주체가 달라</b> 혼동이 많습니다. 기관 유형에 따라 반드시 구분하세요.
@@ -406,7 +406,7 @@ elif menu == "💰 본인부담 100% 적용 상황":
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("📌 상황5 - 의료급여 수급권자 타기관 이용"):
+    with st.expander("[상황5] 의료급여 수급권자 타기관 이용"):
         st.markdown("""
         <table class="t">
             <tr><th>수급권자 유형</th><th>이용 조건</th><th>본인부담</th></tr>
@@ -567,7 +567,7 @@ elif menu == "💊 원내처방 원칙 & 사유":
     </div>
     """, unsafe_allow_html=True)
 
-    with st.expander("🧪 원내처방 vs 원외처방 비교 정리"):
+    with st.expander("[비교] 원내처방 vs 원외처방"):
         st.markdown("""
         <table class="t">
             <tr><th>항목</th><th>원내처방</th><th>원외처방</th></tr>
@@ -789,7 +789,7 @@ elif menu == "📋 청구 방법 & 수가 산정":
     </table>
     """, unsafe_allow_html=True)
 
-    with st.expander("🚗 자동차보험 입원환자 외진 청구 - 건강보험과 다름"):
+    with st.expander("[자동차보험] 입원환자 외진 청구 기준 - 건강보험과 상이"):
         st.markdown("""
         <div class="box-warning">
             <b>⚠️ 자동차보험은 건강보험과 청구 방식이 다릅니다!</b>
@@ -823,7 +823,7 @@ elif menu == "📋 청구 방법 & 수가 산정":
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("💡 실무 계산 예시 - 가상 케이스"):
+    with st.expander("[예시] 실무 계산 가상 케이스"):
         st.markdown("""
         <div class="card">
             <b style="color:#1565c0;">📋 케이스 예시</b><br>
@@ -1360,8 +1360,9 @@ elif menu == "⚡ 특수 케이스 Q&A":
 
     for qa in qas:
         # tag에서 이모지만 추출 (첫 단어), expander 제목은 순수 텍스트
-        tag_emoji = qa['tag'].split()[0]
-        expander_label = f"{tag_emoji} {qa['q']}"
+        # 이모지 없이 순수 텍스트로 expander 제목 구성
+        tag_text = qa['tag'].split()[-1]  # 예: '청구', '처방' 등
+        expander_label = f"[{tag_text}] {qa['q']}"
         with st.expander(expander_label):
             st.markdown(f"""
             <div style="padding:16px 20px;background:#f5f9ff;border-radius:8px;
