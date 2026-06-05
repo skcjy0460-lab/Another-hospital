@@ -100,7 +100,7 @@ section[data-testid="stMain"] > div { background: transparent !important; }
 
 /* expander */
 [data-testid="stExpander"] { background:#ffffff !important; border:1px solid #dce6f0 !important; border-radius:10px !important; box-shadow:0 1px 4px rgba(0,0,0,0.05) !important; }
-[data-testid="stExpander"] summary { color:#1565c0 !important; font-weight:600 !important; }
+/* stExpander 미사용 */
 
 /* 탭 */
 .stTabs [data-baseweb="tab-list"] { background:#e8f0f8 !important; border-radius:10px !important; border:1px solid #cfe0f0 !important; }
@@ -273,9 +273,9 @@ elif menu == "💰 본인부담 100% 적용 상황":
     </div>
     """, unsafe_allow_html=True)
 
-    with st.expander("[상황1] 의뢰서 없이 상급종합병원 이용", expanded=True):
-        st.markdown("""
-        <table class="t">
+    st.markdown('<div style="margin:12px 0;border:1px solid #dce6f0;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.05);"><div style="background:#e3f2fd;padding:12px 18px;font-weight:700;color:#1565c0;font-size:0.95rem;border-bottom:1px solid #dce6f0;">[상황1] 의뢰서 없이 상급종합병원 이용</div><div style="padding:16px 18px;">', unsafe_allow_html=True)
+    st.markdown("""
+    <table class="t">
             <tr><th>구분</th><th>내용</th><th>본인부담률</th><th>비고</th></tr>
             <tr>
                 <td><span class="b bb">상급종합병원 초진</span></td>
@@ -307,23 +307,24 @@ elif menu == "💰 본인부담 100% 적용 상황":
                 <td><span class="grn">정상 본인부담 (예외)</span></td>
                 <td>100% 적용 대상 제외</td>
             </tr>
-        </table>
-        <div class="box-warning">
+    </table>
+    <div class="box-warning">
             <b>⚠️ 약제 처방 주의:</b> 의뢰서 없이 100% 본인부담으로 진료받은 경우,
             해당 처방전으로 <b>외부 약국에서도 100% 본인부담</b>으로 조제해야 합니다.
-        </div>
-        <div class="box-purple">
+    </div>
+    <div class="box-purple">
             📜 <b>근거:</b> 요양급여기준 규칙 제2조·제6조 / 시행령 별표2 제1호 나목
-        </div>
-        """, unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
 
-    with st.expander("[상황2] 입원 중 의뢰 없이 임의로 타기관 방문"):
-        st.markdown("""
-        <div class="box-danger">
+    st.markdown('</div></div>', unsafe_allow_html=True)
+    st.markdown('<div style="margin:12px 0;border:1px solid #dce6f0;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.05);"><div style="background:#f0f6ff;padding:12px 18px;font-weight:700;color:#1565c0;font-size:0.95rem;border-bottom:1px solid #dce6f0;">[상황2] 입원 중 의뢰 없이 임의로 타기관 방문</div><div style="padding:16px 18px;">', unsafe_allow_html=True)
+    st.markdown("""
+    <div class="box-danger">
             <b>🚫 원칙:</b> 입원환자가 의뢰서 없이 임의로 타기관을 이용하면 <b>진료비 전액 본인부담</b>입니다.
             응급상황은 예외이나 사후 처리 필요.
-        </div>
-        <table class="t">
+    </div>
+    <table class="t">
             <tr><th>환자 유형</th><th>상황</th><th>본인부담</th><th>소급 여부</th></tr>
             <tr>
                 <td>건강보험 입원환자</td>
@@ -343,18 +344,19 @@ elif menu == "💰 본인부담 100% 적용 상황":
                 <td><span class="grn">급여 적용 가능</span></td>
                 <td>응급 인정 시 사후 처리</td>
             </tr>
-        </table>
-        <div class="box-info">
+    </table>
+    <div class="box-info">
             <b>📌 원무 실무 포인트:</b><br>
             ① 입원환자 타기관 방문 전 반드시 의뢰서 발급 여부 확인<br>
             ② 의뢰서 없이 이미 진료받고 온 경우 → 소급 급여 적용 불가<br>
             ③ 응급으로 타기관 이용한 경우 → 입원 후 즉시 사후 처리 절차 안내
-        </div>
-        """, unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
 
-    with st.expander("[상황3] 의뢰서 원본 미제출·사본·유효기간 초과"):
-        st.markdown("""
-        <table class="t">
+    st.markdown('</div></div>', unsafe_allow_html=True)
+    st.markdown('<div style="margin:12px 0;border:1px solid #dce6f0;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.05);"><div style="background:#f0f6ff;padding:12px 18px;font-weight:700;color:#1565c0;font-size:0.95rem;border-bottom:1px solid #dce6f0;">[상황3] 의뢰서 원본 미제출 · 사본 · 유효기간 초과</div><div style="padding:16px 18px;">', unsafe_allow_html=True)
+    st.markdown("""
+    <table class="t">
             <tr><th>상황</th><th>처리 방법</th><th>급여 적용</th></tr>
             <tr>
                 <td>사본 먼저 제출</td>
@@ -376,19 +378,20 @@ elif menu == "💰 본인부담 100% 적용 상황":
                 <td>재발급 후 제출</td>
                 <td>초과 기간 진료분은 100% 본인부담</td>
             </tr>
-        </table>
-        <div class="box-danger">
+    </table>
+    <div class="box-danger">
             <b>🚫 절대 주의:</b> 소견서나 진단서는 「요양급여의뢰서」를 대체할 수 없습니다.
             반드시 정식 서식의 요양급여의뢰서를 수령하세요.
-        </div>
-        """, unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
 
-    with st.expander("[상황4] 한방병원 입원 중 양방 외진"):
-        st.markdown("""
-        <div class="box-warning">
+    st.markdown('</div></div>', unsafe_allow_html=True)
+    st.markdown('<div style="margin:12px 0;border:1px solid #dce6f0;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.05);"><div style="background:#f0f6ff;padding:12px 18px;font-weight:700;color:#1565c0;font-size:0.95rem;border-bottom:1px solid #dce6f0;">[상황4] 한방병원 입원 중 양방 외진</div><div style="padding:16px 18px;">', unsafe_allow_html=True)
+    st.markdown("""
+    <div class="box-warning">
             이 경우 <b>청구 주체가 달라</b> 혼동이 많습니다. 기관 유형에 따라 반드시 구분하세요.
-        </div>
-        <table class="t">
+    </div>
+    <table class="t">
             <tr><th>상황</th><th>청구 주체</th><th>본인부담률</th></tr>
             <tr>
                 <td>한방병원 입원 → 별개 양방기관 외래 의뢰</td>
@@ -400,15 +403,16 @@ elif menu == "💰 본인부담 100% 적용 상황":
                 <td><span class="grn">한방 입원기관에서 통합 청구</span></td>
                 <td>입원 본인부담률 적용</td>
             </tr>
-        </table>
-        <div class="box-purple">
+    </table>
+    <div class="box-purple">
             📜 근거: 복지부 보관 65720-295호(1996.3.6.) / 복지부 고시 제2014-126호
-        </div>
-        """, unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
 
-    with st.expander("[상황5] 의료급여 수급권자 타기관 이용"):
-        st.markdown("""
-        <table class="t">
+    st.markdown('</div></div>', unsafe_allow_html=True)
+    st.markdown('<div style="margin:12px 0;border:1px solid #dce6f0;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.05);"><div style="background:#f0f6ff;padding:12px 18px;font-weight:700;color:#1565c0;font-size:0.95rem;border-bottom:1px solid #dce6f0;">[상황5] 의료급여 수급권자 타기관 이용</div><div style="padding:16px 18px;">', unsafe_allow_html=True)
+    st.markdown("""
+    <table class="t">
             <tr><th>수급권자 유형</th><th>이용 조건</th><th>본인부담</th></tr>
             <tr>
                 <td>1종 수급권자</td>
@@ -430,15 +434,17 @@ elif menu == "💰 본인부담 100% 적용 상황":
                 <td>적법 의뢰 절차 이행</td>
                 <td><span class="grn">급여 적용</span></td>
             </tr>
-        </table>
-        <div class="box-info">
+    </table>
+    <div class="box-info">
             <b>📌 의료급여 특이사항:</b><br>
             · 1종 수급권자 입원 시 본인부담 없음 (단, 법정 비급여·전액본인부담 제외)<br>
             · 65세 이상 임플란트: 1종 10%, 2종 20%<br>
             · 정신질환 입원 정액수가 기관에서 타기관 외래 의뢰 시 행위별 수가로 청구 가능
-        </div>
-        """, unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
 
+
+    st.markdown('</div></div>', unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
 # 섹션 3: 원내처방 원칙
@@ -567,18 +573,20 @@ elif menu == "💊 원내처방 원칙 & 사유":
     </div>
     """, unsafe_allow_html=True)
 
-    with st.expander("[비교] 원내처방 vs 원외처방"):
-        st.markdown("""
-        <table class="t">
+    st.markdown('<div style="margin:12px 0;border:1px solid #dce6f0;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.05);"><div style="background:#f0f6ff;padding:12px 18px;font-weight:700;color:#1565c0;font-size:0.95rem;border-bottom:1px solid #dce6f0;">[비교] 원내처방 vs 원외처방</div><div style="padding:16px 18px;">', unsafe_allow_html=True)
+    st.markdown("""
+    <table class="t">
             <tr><th>항목</th><th>원내처방</th><th>원외처방</th></tr>
             <tr><td>처방 방식</td><td>병원 내 약국에서 직접 조제·투약</td><td>처방전 발급 → 외부 약국 조제</td></tr>
             <tr><td>입원환자 적용</td><td><span class="grn">원칙 적용</span></td><td><span class="red">원칙적 불가</span></td></tr>
             <tr><td>외진 처방</td><td><span class="grn">적용</span></td><td><span class="red">불가</span></td></tr>
             <tr><td>청구 방법</td><td>입원 기관에서 통합 청구</td><td>환자가 약국에서 별도 수납</td></tr>
             <tr><td>처방전 유효기간</td><td>해당 없음</td><td>발급일 포함 3일</td></tr>
-        </table>
-        """, unsafe_allow_html=True)
+    </table>
+    """, unsafe_allow_html=True)
 
+
+    st.markdown('</div></div>', unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
 # 섹션 4: 원외처방 안 되는 사유
@@ -789,12 +797,12 @@ elif menu == "📋 청구 방법 & 수가 산정":
     </table>
     """, unsafe_allow_html=True)
 
-    with st.expander("[자동차보험] 입원환자 외진 청구 기준 - 건강보험과 상이"):
-        st.markdown("""
-        <div class="box-warning">
+    st.markdown('<div style="margin:12px 0;border:1px solid #dce6f0;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.05);"><div style="background:#f0f6ff;padding:12px 18px;font-weight:700;color:#1565c0;font-size:0.95rem;border-bottom:1px solid #dce6f0;">[자동차보험] 입원환자 외진 청구 기준 - 건강보험과 상이</div><div style="padding:16px 18px;">', unsafe_allow_html=True)
+    st.markdown("""
+    <div class="box-warning">
             <b>⚠️ 자동차보험은 건강보험과 청구 방식이 다릅니다!</b>
-        </div>
-        <table class="t">
+    </div>
+    <table class="t">
             <tr><th>항목</th><th>건강보험</th><th>자동차보험</th></tr>
             <tr>
                 <td>청구 주체</td>
@@ -816,16 +824,17 @@ elif menu == "📋 청구 방법 & 수가 산정":
                 <td>별도 청구 없음</td>
                 <td>MT015: '69' + MJ006: 의뢰한 기관기호/일자</td>
             </tr>
-        </table>
-        <div class="box-purple">
+    </table>
+    <div class="box-purple">
             📜 근거: 국토교통부고시 제2023-2호 「자동차보험진료수가에 관한 기준」<br>
             📜 국토교통부고시 제2023-3호 「자동차보험진료수가 심사업무처리에 관한 규정」
-        </div>
-        """, unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
 
-    with st.expander("[예시] 실무 계산 가상 케이스"):
-        st.markdown("""
-        <div class="card">
+    st.markdown('</div></div>', unsafe_allow_html=True)
+    st.markdown('<div style="margin:12px 0;border:1px solid #dce6f0;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.05);"><div style="background:#f0f6ff;padding:12px 18px;font-weight:700;color:#1565c0;font-size:0.95rem;border-bottom:1px solid #dce6f0;">[예시] 실무 계산 가상 케이스</div><div style="padding:16px 18px;">', unsafe_allow_html=True)
+    st.markdown("""
+    <div class="card">
             <b style="color:#1565c0;">📋 케이스 예시</b><br>
             <span style="color:#37474f;">
             A병원(종합병원) 입원 환자 → B의원(의원급)으로 피부과 외진 의뢰<br>
@@ -839,12 +848,14 @@ elif menu == "📋 청구 방법 & 수가 산정":
                 • 적용 본인부담률: <span class="grn">입원 본인부담률 20%</span> (A병원 입원 기준)<br>
                 • 청구 기관: <span class="grn">A병원(의뢰한 기관)</span>이 B의원 외진 내역 포함 청구
             </div>
-        </div>
-        <div class="box-info">
+    </div>
+    <div class="box-info">
             <b>💡 핵심 포인트:</b> 단가·가산율은 의뢰받은 기관(B의원) 기준 / 본인부담률은 의뢰한 기관(A병원) 입원 기준
-        </div>
-        """, unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
 
+
+    st.markdown('</div></div>', unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
 # 섹션 6: 선별집중심사 & 고가검사
@@ -1359,23 +1370,27 @@ elif menu == "⚡ 특수 케이스 Q&A":
     ]
 
     for qa in qas:
-        # tag에서 이모지만 추출 (첫 단어), expander 제목은 순수 텍스트
-        # 이모지 없이 순수 텍스트로 expander 제목 구성
-        tag_text = qa['tag'].split()[-1]  # 예: '청구', '처방' 등
-        expander_label = f"[{tag_text}] {qa['q']}"
-        with st.expander(expander_label):
-            st.markdown(f"""
-            <div style="padding:16px 20px;background:#f5f9ff;border-radius:8px;
-            color:#1a2a3a;line-height:1.9;font-size:0.91rem;">
-                <span style="display:inline-block;background:#e3f2fd;color:#1565c0;
-                font-size:0.75rem;font-weight:700;padding:2px 10px;border-radius:20px;
-                margin-bottom:10px;">{qa['tag']}</span><br><br>
-                {qa['a']}
-            </div>
-            <div class="box-purple" style="margin-top:12px;">
-                📜 <b>관련 근거:</b> {qa['law']}
-            </div>
-            """, unsafe_allow_html=True)
+        tag_text = qa['tag'].split()[-1]
+        label = f"[{tag_text}] {qa['q']}"
+        body = f"""
+        <div style="padding:16px 20px;background:#f5f9ff;border-radius:0 0 8px 8px;
+        color:#1a2a3a;line-height:1.9;font-size:0.91rem;">
+            <span style="display:inline-block;background:#e3f2fd;color:#1565c0;
+            font-size:0.75rem;font-weight:700;padding:2px 10px;border-radius:20px;
+            margin-bottom:10px;">{qa['tag']}</span><br><br>
+            {qa['a']}
+        </div>
+        <div style="padding:10px 20px 16px;background:#f3e5f5;border-radius:0 0 10px 10px;
+        color:#4a148c;font-size:0.84rem;font-family:monospace;border-top:1px solid #e1bee7;">
+            📜 <b>관련 근거:</b> {qa['law']}
+        </div>
+        """
+        card_html = f'''<div style="margin:10px 0;border:1px solid #dce6f0;border-radius:10px;
+        overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+        <div style="background:#f0f6ff;padding:12px 18px;font-weight:700;
+        color:#1565c0;font-size:0.95rem;border-bottom:1px solid #dce6f0;">{label}</div>
+        {body}</div>'''
+        st.markdown(card_html, unsafe_allow_html=True)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -1386,8 +1401,8 @@ elif menu == "✅ 빠른 체크리스트":
 
     st.markdown("""
     <div class="box-info">
-        <b>📌 사용 방법:</b> 외진 발생 시 아래 체크리스트를 순서대로 확인하세요.
-        체크하며 빠진 항목을 즉시 조치하세요.
+    <b>📌 사용 방법:</b> 외진 발생 시 아래 체크리스트를 순서대로 확인하세요.
+    체크하며 빠진 항목을 즉시 조치하세요.
     </div>
     """, unsafe_allow_html=True)
 
@@ -1448,7 +1463,6 @@ elif menu == "✅ 빠른 체크리스트":
         ]
         for item in burden:
             st.checkbox(item, key=f"b_{item[:15]}")
-
     st.markdown("---")
 
     col3, col4 = st.columns(2)
@@ -1478,9 +1492,9 @@ elif menu == "✅ 빠른 체크리스트":
 
     st.markdown("""
     <div class="box-warning" style="margin-top:20px;">
-        <b>⚠️ 이의신청 기한 알림:</b><br>
-        심사결과 통보 후 <b>90일 이내</b> 이의신청 가능 (국민건강보험법 제87조)<br>
-        심사 삭감 내역 수령 즉시 진료기록부·참고자료 검토 시작 권장
+    <b>⚠️ 이의신청 기한 알림:</b><br>
+    심사결과 통보 후 <b>90일 이내</b> 이의신청 가능 (국민건강보험법 제87조)<br>
+    심사 삭감 내역 수령 즉시 진료기록부·참고자료 검토 시작 권장
     </div>
     """, unsafe_allow_html=True)
 
