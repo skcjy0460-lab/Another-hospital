@@ -1371,26 +1371,35 @@ elif menu == "⚡ 특수 케이스 Q&A":
 
     for qa in qas:
         tag_text = qa['tag'].split()[-1]
-        label = f"[{tag_text}] {qa['q']}"
-        body = f"""
-        <div style="padding:16px 20px;background:#f5f9ff;border-radius:0 0 8px 8px;
-        color:#1a2a3a;line-height:1.9;font-size:0.91rem;">
-            <span style="display:inline-block;background:#e3f2fd;color:#1565c0;
-            font-size:0.75rem;font-weight:700;padding:2px 10px;border-radius:20px;
-            margin-bottom:10px;">{qa['tag']}</span><br><br>
-            {qa['a']}
-        </div>
-        <div style="padding:10px 20px 16px;background:#f3e5f5;border-radius:0 0 10px 10px;
-        color:#4a148c;font-size:0.84rem;font-family:monospace;border-top:1px solid #e1bee7;">
-            📜 <b>관련 근거:</b> {qa['law']}
-        </div>
-        """
-        card_html = f'''<div style="margin:10px 0;border:1px solid #dce6f0;border-radius:10px;
-        overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.05);">
-        <div style="background:#f0f6ff;padding:12px 18px;font-weight:700;
-        color:#1565c0;font-size:0.95rem;border-bottom:1px solid #dce6f0;">{label}</div>
-        {body}</div>'''
-        st.markdown(card_html, unsafe_allow_html=True)
+        label = "[" + tag_text + "] " + qa["q"]
+        tag_badge = qa["tag"]
+        answer = qa["a"]
+        law = qa["law"]
+
+        # 헤더와 본문을 분리해서 각각 st.markdown 호출
+        st.markdown(
+            '<div style="margin:10px 0;border:1px solid #dce6f0;border-radius:10px;'
+            'overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.05);">'
+            '<div style="background:#f0f6ff;padding:12px 18px;font-weight:700;'
+            'color:#1565c0;font-size:0.95rem;border-bottom:1px solid #dce6f0;">'
+            + label +
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.markdown(
+            '<div style="padding:16px 20px;background:#f5f9ff;'
+            'color:#1a2a3a;line-height:1.9;font-size:0.91rem;">'
+            '<span style="display:inline-block;background:#e3f2fd;color:#1565c0;'
+            'font-size:0.75rem;font-weight:700;padding:2px 10px;border-radius:20px;'
+            'margin-bottom:10px;">' + tag_badge + '</span><br><br>'
+            + answer +
+            '</div>'
+            '<div style="padding:10px 20px 14px;background:#f3e5f5;'
+            'color:#4a148c;font-size:0.84rem;border-top:1px solid #e1bee7;">'
+            '📜 <b>관련 근거:</b> ' + law +
+            '</div></div>',
+            unsafe_allow_html=True
+        )
 
 
 # ══════════════════════════════════════════════════════════════════════════════
